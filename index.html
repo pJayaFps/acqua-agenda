@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AcquaFlash - Registro de Placas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>AcquaFlash · Registro de Lavagens</h1>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Registrar Lavagem</h2>
+        <form id="form-registrar">
+          <label>Placa
+            <input type="text" id="placa" maxlength="10" placeholder="Ex: ABC-1234 ou ABC1D23" required />
+          </label>
+
+          <label>Tipo de lavagem
+            <select id="tipo_lavagem">
+              <option value="simples">Lavagem simples</option>
+              <option value="especial">Lavagem especial</option>
+            </select>
+          </label>
+
+          <div class="actions">
+            <button type="submit">Registrar</button>
+            <button type="reset" id="btn-limpar">Limpar</button>
+          </div>
+          <div id="msg"></div>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Listagem e Busca</h2>
+        <div class="filtros">
+          <input type="text" id="filtro-placa" placeholder="Buscar por placa (parte ou completa)" />
+          <input type="date" id="filtro-data" />
+          <select id="filtro-tipo">
+            <option value="todas">Todas</option>
+            <option value="simples">Simples</option>
+            <option value="especial">Especial</option>
+          </select>
+          <button id="btn-buscar">Buscar</button>
+          <button id="btn-listar-tudo">Listar tudo</button>
+        </div>
+
+        <div class="table-wrap">
+          <table id="tabela-lavagens">
+            <thead>
+              <tr>
+                <th>Placa</th>
+                <th>Tipo</th>
+                <th> </th>
+                <th>Data</th>
+                <th>Hora</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div id="resumo" class="box">
+          <h3>Resumo de Hoje</h3>
+          <p id="hoje-total"></p>
+          <p id="hoje-simples"></p>
+          <p id="hoje-especial"></p>
+
+          <br>
+
+          <h3>Resumo do Mês</h3>
+          <p id="mes-total"></p>
+          <p id="mes-simples"></p>
+          <p id="mes-especial"></p>
+        </div>
+        <div style="margin-bottom: 15px;">
+          <label for="dataRelatorio">Escolha a data:</label>
+          <input type="date" id="dataRelatorio">
+          <button onclick="buscarRelatorioPorDia()">Buscar</button>
+        </div>
+
+        <div id="resultadoDia" style="padding: 10px; border: 1px solid #ccc;">
+          Escolha uma data e clique em buscar.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <small>Lavacar · Sistema de registro digital</small>
+    </footer>
+  </div>
+
+
+  <script src="app.js"></script>
+</body>
+
+</html>

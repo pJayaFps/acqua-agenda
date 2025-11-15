@@ -1,0 +1,464 @@
+/* ========================================
+   AcquaFlash - CSS Profissional
+   ======================================== */
+
+/* Importar fonte Inter do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ========================================
+   Reset e Variáveis
+   ======================================== */
+:root {
+  --cor-primaria: #0A1A2F;
+  --cor-secundaria: #1E3A5F;
+  --cor-acento: #3B82F6;
+  --cor-acento-hover: #2563EB;
+  --cor-sucesso: #10B981;
+  --cor-alerta: #F59E0B;
+  --cor-perigo: #EF4444;
+  --cor-fundo: #F8FAFC;
+  --cor-fundo-card: #FFFFFF;
+  --cor-texto: #1E293B;
+  --cor-texto-secundario: #64748B;
+  --cor-borda: #E2E8F0;
+  --cor-hover: #F1F5F9;
+  --sombra-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sombra-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --raio-sm: 6px;
+  --raio-md: 10px;
+  --raio-lg: 14px;
+  --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, var(--cor-fundo) 0%, #E0E7FF 100%);
+  color: var(--cor-texto);
+  line-height: 1.6;
+  min-height: 100vh;
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   Container Principal
+   ======================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+header {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+  color: white;
+  padding: 32px 28px;
+  border-radius: var(--raio-lg);
+  margin-bottom: 32px;
+  box-shadow: var(--sombra-lg);
+  text-align: center;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* ========================================
+   Main e Sections
+   ======================================== */
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  background: var(--cor-fundo-card);
+  border-radius: var(--raio-lg);
+  padding: 28px;
+  box-shadow: var(--sombra-md);
+  transition: var(--transicao);
+}
+
+.card:hover {
+  box-shadow: var(--sombra-lg);
+}
+
+.card h2 {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--cor-borda);
+}
+
+.card h3 {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--cor-secundaria);
+  margin-bottom: 12px;
+}
+
+/* ========================================
+   Formulários
+   ======================================== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--cor-texto);
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  font-size: 15px;
+  font-family: inherit;
+  background: white;
+  color: var(--cor-texto);
+  transition: var(--transicao);
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  border-color: var(--cor-acento);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+input[type="text"]:hover,
+input[type="date"]:hover,
+select:hover {
+  border-color: var(--cor-acento);
+}
+
+input::placeholder {
+  color: var(--cor-texto-secundario);
+}
+
+/* ========================================
+   Botões
+   ======================================== */
+button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--raio-md);
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: var(--transicao);
+  outline: none;
+  white-space: nowrap;
+}
+
+button[type="submit"],
+#btn-buscar {
+  background: linear-gradient(135deg, var(--cor-acento) 0%, var(--cor-acento-hover) 100%);
+  color: white;
+  box-shadow: var(--sombra-sm);
+}
+
+button[type="submit"]:hover,
+#btn-buscar:hover {
+  background: linear-gradient(135deg, var(--cor-acento-hover) 0%, #1D4ED8 100%);
+  box-shadow: var(--sombra-md);
+  transform: translateY(-1px);
+}
+
+button[type="submit"]:active,
+#btn-buscar:active {
+  transform: translateY(0);
+}
+
+button[type="reset"],
+#btn-limpar,
+#btn-listar-tudo {
+  background: white;
+  color: var(--cor-texto);
+  border: 2px solid var(--cor-borda);
+}
+
+button[type="reset"]:hover,
+#btn-limpar:hover,
+#btn-listar-tudo:hover {
+  background: var(--cor-hover);
+  border-color: var(--cor-acento);
+  color: var(--cor-acento);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+/* ========================================
+   Mensagens
+   ======================================== */
+#msg {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: var(--raio-sm);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  opacity: 0;
+  transition: var(--transicao);
+}
+
+#msg:not(:empty) {
+  opacity: 1;
+}
+
+/* ========================================
+   Filtros
+   ======================================== */
+.filtros {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.filtros input,
+.filtros select {
+  margin: 0;
+}
+
+/* ========================================
+   Tabela
+   ======================================== */
+.table-wrap {
+  overflow-x: auto;
+  margin-bottom: 24px;
+  border-radius: var(--raio-md);
+  box-shadow: var(--sombra-sm);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+thead {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+  color: white;
+}
+
+thead th {
+  padding: 14px 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--cor-borda);
+  transition: var(--transicao);
+}
+
+tbody tr:hover {
+  background: var(--cor-hover);
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+tbody td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--cor-texto);
+}
+
+tbody td:first-child {
+  font-weight: 600;
+  color: var(--cor-primaria);
+}
+
+/* ========================================
+   Box de Resumo
+   ======================================== */
+.box {
+  background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 100%);
+  padding: 20px;
+  border-radius: var(--raio-md);
+  border: 2px solid #BAE6FD;
+  margin-bottom: 24px;
+}
+
+.box p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: var(--cor-texto);
+}
+
+.box h3 {
+  color: var(--cor-primaria);
+  margin-top: 16px;
+}
+
+.box h3:first-child {
+  margin-top: 0;
+}
+
+/* ========================================
+   Resultado Dia
+   ======================================== */
+#resultadoDia {
+  background: white;
+  padding: 20px;
+  border: 2px solid var(--cor-borda);
+  border-radius: var(--raio-md);
+  color: var(--cor-texto-secundario);
+  font-size: 14px;
+  min-height: 100px;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+footer {
+  margin-top: 40px;
+  padding: 24px;
+  text-align: center;
+  color: var(--cor-texto-secundario);
+  font-size: 13px;
+}
+
+footer small {
+  display: block;
+  font-weight: 400;
+}
+
+/* ========================================
+   Responsividade
+   ======================================== */
+@media (min-width: 640px) {
+  .container {
+    padding: 30px;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  .card {
+    padding: 32px;
+  }
+
+  .filtros {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  body {
+    font-size: 16px;
+  }
+
+  header {
+    padding: 40px 32px;
+  }
+
+  header h1 {
+    font-size: 36px;
+  }
+
+  .card h2 {
+    font-size: 24px;
+  }
+
+  .filtros {
+    grid-template-columns: 2fr 1fr 1fr auto auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+
+  main {
+    gap: 32px;
+  }
+
+  .card {
+    padding: 36px;
+  }
+}
+
+/* ========================================
+   Animações e Efeitos
+   ======================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Melhorias de acessibilidade */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--cor-acento);
+  outline-offset: 2px;
+}
+
+/* Estados de sucesso/erro para mensagens */
+#msg.sucesso {
+  background: #D1FAE5;
+  color: #065F46;
+  border-left: 4px solid var(--cor-sucesso);
+}
+
+#msg.erro {
+  background: #FEE2E2;
+  color: #991B1B;
+  border-left: 4px solid var(--cor-perigo);
+}
