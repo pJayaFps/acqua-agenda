@@ -12,6 +12,17 @@ const filtroData = document.getElementById('filtro-data');
 const filtroTipo = document.getElementById('filtro-tipo');
 const btnBuscar = document.getElementById('btn-buscar');
 const btnListarTudo = document.getElementById('btn-listar-tudo');
+const loginData = JSON.parse(localStorage.getItem("loginData"));
+
+if (!loginData) {
+    window.location.href = "login.html";
+  } else {
+    const agora = Date.now();
+    if (agora > loginData.expiraEm) {
+      localStorage.removeItem("loginData"); // expirou
+      window.location.href = "login.html";
+    }
+  }
 
 // Validação de placa (mesma lógica do backend)
 function validarPlacaFrontend(placaRaw) {
@@ -103,6 +114,11 @@ async function carregarRelatorios() {
 
 // Chama ao iniciar
 carregarRelatorios();
+
+function sair() {
+    localStorage.removeItem("loginData");
+    window.location.href = "login.html";
+  }
 
 async function buscarRelatorioPorDia() {
   const data = document.getElementById("dataRelatorio").value;

@@ -1,31 +1,23 @@
-// Usuário e senha “pré-definidos” (JSON local)
-const credenciais = {
-  usuario: "admin",
-  senha: "1234"
-};
+const USER = "admin";     // coloque seu usuario
+    const PASS = "1234";      // coloque sua senha
 
-const btnLogin = document.getElementById("btnLogin");
-const msgErro = document.getElementById("msgErro");
+    document.getElementById("btnLogin").addEventListener("click", () => {
+      const usuario = document.getElementById("usuario").value.trim();
+      const senha = document.getElementById("senha").value.trim();
+      const msgErro = document.getElementById("msgErro");
 
-btnLogin.addEventListener("click", () => {
-  const usuario = document.getElementById("usuario").value.trim();
-  const senha = document.getElementById("senha").value.trim();
+      if (usuario === USER && senha === PASS) {
+        // Login válido → salva por 24 horas
+        const expiraEm = Date.now() + (24 * 60 * 60 * 1000);
 
-  if (usuario === credenciais.usuario && senha === credenciais.senha) {
-    // login ok → salvar no sessionStorage e redirecionar
-    sessionStorage.setItem("logado", "true");
-    window.location.href = "index.html"; // aqui vai a página principal do sistema
-  } else {
-    msgErro.textContent = "Usuário ou senha incorretos!";
-  }
-});
+        localStorage.setItem("loginData", JSON.stringify({ expiraEm }));
 
-// Bloquear acesso se não logado
-window.addEventListener("load", () => {
-  if (window.location.pathname.endsWith("index.html")) {
-    const logado = sessionStorage.getItem("logado");
-    if (!logado) {
-      window.location.href = "login.html";
-    }
-  }
-});
+        // Delay para evitar bug do loop infinito
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 100);
+
+      } else {
+        msgErro.textContent = "Usuário ou senha incorretos!";
+      }
+    });
