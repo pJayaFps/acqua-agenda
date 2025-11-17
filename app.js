@@ -1,5 +1,5 @@
 // app.js - frontend em JS puro (em português)
-const API_BASE = 'https://acqua-agenda-back.onrender.com/api';
+const API_BASE = 'https://acqua-agenda-back-1.onrender.com/api';
 
 const form = document.getElementById('form-registrar');
 const placaInput = document.getElementById('placa');
@@ -86,7 +86,7 @@ async function carregarLavagens() {
 
 async function carregarRelatorios() {
   // Diário
-  const diaRes = await fetch("https://acqua-agenda-back.onrender.com/api/relatorio/dia");
+  const diaRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/dia");
   const dia = await diaRes.json();
 
   document.getElementById("hoje-total").innerText = `Total: ${dia.total}`;
@@ -94,7 +94,7 @@ async function carregarRelatorios() {
   document.getElementById("hoje-especial").innerText = `Especial: ${dia.especial}`;
 
   // Mensal
-  const mesRes = await fetch("https://acqua-agenda-back.onrender.com/api/relatorio/mensal");
+  const mesRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/mensal");
   const mes = await mesRes.json();
 
   document.getElementById("mes-total").innerText = `Total: ${mes.total}`;
@@ -119,7 +119,7 @@ async function buscarRelatorioPorDia() {
   }
 
   try {
-    const resposta = await fetch(`https://acqua-agenda-back.onrender.com/api/relatorio/por-dia?data=${data}`);
+    const resposta = await fetch(`https://acqua-agenda-back-1.onrender.com/api/relatorio/por-dia?data=${data}`);
 
     if (!resposta.ok) {
       document.getElementById("resultadoDia").innerHTML = "Erro ao buscar relatório.";
