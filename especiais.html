@@ -1,0 +1,123 @@
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginData = JSON.parse(localStorage.getItem("loginData") || "{}");
+
+    // Se não tiver login ou expirou
+    if (!loginData.username || Date.now() > loginData.expiraEm) {
+      localStorage.removeItem("loginData");
+      window.location.replace("login.html");
+    }
+  });
+</script>
+
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AcquaFlash - Registro de Placas</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>AcquaFlash · Registro de Lavagens</h1>
+            <button id="btnSair" onclick="sair()">Sair</button>
+        </header>
+
+        <main>
+
+            <section>
+
+
+                <div class="card">
+                    <h2>Lavagem Especial (P / M / G)</h2>
+                    <form id="form-especial-pmg">
+                        <label>Placa</label>
+                        <input type="text" id="placaPMG" placeholder="Ex: ABC-1234 ou ABC1D23" required>
+
+                        <label>Categoria</label>
+                        <select id="categoriaPMG">
+                            <option value="P">P (Pequeno)</option>
+                            <option value="M">M (Médio)</option>
+                            <option value="G">G (Grande)</option>
+                        </select>
+
+                        <button type="submit">Registrar Especial PMG</button>
+                    </form>
+
+                    <p id="msgPMG"></p>
+                </div>
+
+
+
+            </section>
+
+            <section class="card">
+                <h2>Listagem e Busca – Lavagens Especiais</h2>
+
+                <div class="filtros">
+                    <input type="text" id="filtro-placa-pmg" placeholder="Buscar por placa" />
+                    <input type="date" id="filtro-data-pmg" />
+
+                    <select id="filtro-categoria-pmg">
+                        <option value="todas">Todas as categorias</option>
+                        <option value="pequeno">Pequeno</option>
+                        <option value="medio">Médio</option>
+                        <option value="grande">Grande</option>
+                    </select>
+
+                    <button id="btn-buscar-pmg">Buscar</button>
+                    <button id="btn-listar-tudo-pmg">Listar tudo</button>
+                </div>
+
+                <div class="table-wrap">
+                    <table id="tabela-pmg">
+                        <thead>
+                            <tr>
+                                <th>Placa</th>
+                                <th>Categoria</th>
+                                <th>Valor</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <div id="resumo" class="box">
+                    <h3>Resumo de Hoje</h3>
+                    <p id="hoje-total-pmg"></p>
+
+                    <br>
+
+                    <h3>Resumo do Mês</h3>
+                    <p id="mes-total-pmg"></p>
+                </div>
+
+                <div style="margin-bottom: 15px;">
+                    <label for="dataRelatorioPMG">Escolha a data:</label>
+                    <input type="date" id="dataRelatorioPMG">
+                    <button onclick="buscarRelatorioPMGPorDia()">Buscar</button>
+                </div>
+
+                <div id="resultadoDiaPMG" style="padding: 10px; border: 1px solid #ccc;">
+                    Escolha uma data e clique em buscar.
+                </div>
+
+            </section>
+
+        </main>
+
+        <footer>
+            <small>Lavacar · Sistema de registro digital</small>
+        </footer>
+    </div>
+
+    <script src="app-especial.js"></script>
+</body>
+
+</html>

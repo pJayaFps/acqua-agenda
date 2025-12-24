@@ -1,10 +1,13 @@
 <script>
-  const loginData = JSON.parse(localStorage.getItem("loginData"));
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginData = JSON.parse(localStorage.getItem("loginData") || "{}");
 
-  if (!loginData || Date.now() > loginData.expiraEm) {
-    localStorage.removeItem("loginData");
-    window.location.replace("login.html");
-  }
+    // Se não tiver login ou expirou
+    if (!loginData.username || Date.now() > loginData.expiraEm) {
+      localStorage.removeItem("loginData");
+      window.location.replace("login.html");
+    }
+  });
 </script>
 
 <!doctype html>
@@ -21,7 +24,7 @@
   <div class="container">
     <header>
       <h1>AcquaFlash · Registro de Lavagens</h1>
-      <button onclick="sair()">Sair</button>
+      <button id="btnSair" onclick="sair()">Sair</button>
     </header>
 
     <main>
@@ -66,8 +69,9 @@
             <thead>
               <tr>
                 <th>Placa</th>
-                <th>Tipo</th>
+                <th>Tipo</th> 
                 <th> </th>
+                <th>Valor</th>
                 <th>Data</th>
                 <th>Hora</th>
               </tr>

@@ -1,23 +1,26 @@
-const USER = "admin";     // coloque seu usuario
-    const PASS = "1234";      // coloque sua senha
+// Usuários do sistema
+const USERS = [
+  { username: "admin", senha: "1234", financeiro: true },   // acesso total
+  { username: "lavagem", senha: "123", financeiro: false }  // só lavagem
+];
 
-    document.getElementById("btnLogin").addEventListener("click", () => {
-      const usuario = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value.trim();
-      const msgErro = document.getElementById("msgErro");
+document.getElementById("btnLogin").addEventListener("click", () => {
+  const usuario = document.getElementById("usuario").value.trim();
+  const senha = document.getElementById("senha").value.trim();
+  const msgErro = document.getElementById("msgErro");
 
-      if (usuario === USER && senha === PASS) {
-        // Login válido → salva por 24 horas
-        const expiraEm = Date.now() + (24 * 60 * 60 * 1000);
+  const user = USERS.find(u => u.username === usuario && u.senha === senha);
 
-        localStorage.setItem("loginData", JSON.stringify({ expiraEm }));
+  if (user) {
+    // Salva login com info de financeiro e expiração
+    const expiraEm = Date.now() + (24 * 60 * 60 * 1000); // 24h
+    localStorage.setItem("loginData", JSON.stringify({ username: user.username, financeiro: user.financeiro, expiraEm }));
 
-        // Delay para evitar bug do loop infinito
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 100);
-
-      } else {
-        msgErro.textContent = "Usuário ou senha incorretos!";
-      }
-    });
+    // Redireciona
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 100);
+  } else {
+    msgErro.textContent = "Usuário ou senha incorretos!";
+  }
+});

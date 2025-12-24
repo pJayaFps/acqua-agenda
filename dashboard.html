@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Sistema de Lavagens</title>
+
+    <!-- Estilo -->
+    <style>
+        /* ========================================
+   Dashboard Sistema de Lavagens - CSS Profissional
+   ======================================== */
+
+        /* Importar fonte Inter do Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        /* ========================================
+   Reset e Variáveis
+   ======================================== */
+        :root {
+            --cor-primaria: #0A1A2F;
+            --cor-secundaria: #1E3A5F;
+            --cor-acento: #3B82F6;
+            --cor-acento-hover: #2563EB;
+            --cor-sucesso: #10B981;
+            --cor-alerta: #F59E0B;
+            --cor-perigo: #EF4444;
+            --cor-fundo: #F8FAFC;
+            --cor-fundo-card: #FFFFFF;
+            --cor-texto: #1E293B;
+            --cor-texto-secundario: #64748B;
+            --cor-borda: #E2E8F0;
+            --cor-hover: #F1F5F9;
+            --sombra-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --sombra-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --sombra-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --raio-sm: 6px;
+            --raio-md: 10px;
+            --raio-lg: 14px;
+            --transicao: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ========================================
+   Body
+   ======================================== */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #E0E7FF 100%);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* ========================================
+   Container Principal
+   ======================================== */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        /* ========================================
+   Título
+   ======================================== */
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--cor-primaria);
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
+            padding: 28px 24px;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: white;
+            border-radius: var(--raio-lg);
+            box-shadow: var(--sombra-lg);
+        }
+
+        /* ========================================
+   Options Container
+   ======================================== */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* ========================================
+   Cards
+   ======================================== */
+        .card {
+            background: var(--cor-fundo-card);
+            padding: 32px 28px;
+            border-radius: var(--raio-lg);
+            box-shadow: var(--sombra-md);
+            cursor: pointer;
+            transition: var(--transicao);
+            border: 2px solid transparent;
+            text-align: left;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--cor-acento);
+            box-shadow: var(--sombra-lg);
+        }
+
+        .card:active {
+            transform: translateY(-2px);
+        }
+
+        .card h2 {
+            margin: 0 0 12px 0;
+            color: var(--cor-acento);
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--cor-texto-secundario);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        /* Efeito visual adicional no hover */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 0;
+            background: linear-gradient(135deg, var(--cor-acento) 0%, var(--cor-acento-hover) 100%);
+            border-radius: var(--raio-lg) 0 0 var(--raio-lg);
+            transition: var(--transicao);
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover::before {
+            height: 100%;
+        }
+
+        /* ========================================
+   Animações
+   ======================================== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========================================
+   Responsividade
+   ======================================== */
+        @media (max-width: 640px) {
+            body {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 26px;
+                padding: 24px 20px;
+                margin-bottom: 32px;
+            }
+
+            .card {
+                padding: 28px 24px;
+            }
+
+            .card h2 {
+                font-size: 22px;
+            }
+
+            .card p {
+                font-size: 14px;
+            }
+
+            .options {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 23px;
+                padding: 20px 18px;
+            }
+
+            .card h2 {
+                font-size: 20px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+        }
+
+        @media (min-width: 641px) {
+            body {
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .card h2 {
+                font-size: 26px;
+            }
+
+            .card p {
+                font-size: 16px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 700px;
+            }
+
+            .options {
+                gap: 28px;
+            }
+        }
+
+        /* ========================================
+   Estados de Foco e Acessibilidade
+   ======================================== */
+        .card:focus {
+            outline: 3px solid var(--cor-acento);
+            outline-offset: 2px;
+        }
+
+        .card:focus:not(:focus-visible) {
+            outline: none;
+        }
+
+        /* ========================================
+   Efeito de Loading (caso necessário)
+   ======================================== */
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .card.loading {
+            animation: pulse 1.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        /* ========================================
+   Variações de Cards (opcional)
+   ======================================== */
+        .card:first-child h2 {
+            color: var(--cor-acento);
+        }
+
+        .card:last-child h2 {
+            color: var(--cor-sucesso);
+        }
+
+        .card:first-child:hover {
+            border-color: var(--cor-acento);
+        }
+
+        .card:last-child:hover {
+            border-color: var(--cor-sucesso);
+        }
+
+        .card:first-child::before {
+            background: linear-gradient(135deg, var(--cor-acento) 0%, var(--cor-acento-hover) 100%);
+        }
+
+        .card:last-child::before {
+            background: linear-gradient(135deg, var(--cor-sucesso) 0%, #059669 100%);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Escolha o Tipo de Sistema</h1>
+
+        <div class="options">
+
+            <!-- Normal -->
+            <div class="card" onclick="window.location.href='index.html'">
+                <h2>Lavagem Normal</h2>
+                <p>Registrar placas, visualizar lista, relatórios, busca e mais.</p>
+            </div>
+
+            <!-- Especial -->
+            <div class="card" onclick="window.location.href='especiais.html'">
+                <h2>Lavagem Especial (P/M/G)</h2>
+                <p>Registrar categoria, quantidade, relatórios e lista do dia.</p>
+            </div>
+
+            <div id="btn-financeiro" class="card" onclick="window.location.href='financeiro.html'">
+                <h2>Financeiro Geral</h2>
+                <p>Finanças da Empresa</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginData = JSON.parse(localStorage.getItem("loginData") || "{}");
+
+            // Se não tiver login ou expirou
+            if (!loginData.username || loginData.expiraEm < Date.now()) {
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Bloquear botão financeiro se não tiver permissão
+            if (!loginData.financeiro) {
+                const btnFinanceiro = document.getElementById("btn-financeiro");
+                if (btnFinanceiro) btnFinanceiro.style.display = "none";
+            }
+        });
+
+    </script>
+</body>
+
+</html>

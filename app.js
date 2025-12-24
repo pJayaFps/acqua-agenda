@@ -1,5 +1,5 @@
 // app.js - frontend em JS puro (em português)
-const API_BASE = 'https://acqua-agenda-back-1.onrender.com/api';
+const API_BASE = 'http://localhost:3000/api';
 
 const form = document.getElementById('form-registrar');
 const placaInput = document.getElementById('placa');
@@ -31,7 +31,7 @@ form.addEventListener('submit', async (e) => {
   if (!validarPlacaFrontend(placa)) {
     msgEl.textContent = 'Placa inválida. Use formato ABC-1234 ou Mercosul.';
     msgEl.style.color = 'crimson';
-    return;
+    return; 
   }
 
   try {
@@ -86,7 +86,7 @@ async function carregarLavagens() {
 
 async function carregarRelatorios() {
   // Diário
-  const diaRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/dia");
+  const diaRes = await fetch("http://localhost:3000/api/relatorio/dia");
   const dia = await diaRes.json();
 
   document.getElementById("hoje-total").innerText = `Total: ${dia.total}`;
@@ -94,7 +94,7 @@ async function carregarRelatorios() {
   document.getElementById("hoje-especial").innerText = `Especial: ${dia.especial}`;
 
   // Mensal
-  const mesRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/mensal");
+  const mesRes = await fetch("http://localhost:3000/api/relatorio/mensal");
   const mes = await mesRes.json();
 
   document.getElementById("mes-total").innerText = `Total: ${mes.total}`;
@@ -110,6 +110,14 @@ function sair() {
     window.location.href = "login.html";
   }
 
+  // Se quiser, também pode adicionar via addEventListener, sem precisar do onclick no HTML:
+document.addEventListener("DOMContentLoaded", () => {
+    const btnSair = document.getElementById("btnSair");
+    if (btnSair) {
+        btnSair.addEventListener("click", sair);
+    }
+});
+
 async function buscarRelatorioPorDia() {
   const data = document.getElementById("dataRelatorio").value;
 
@@ -119,7 +127,7 @@ async function buscarRelatorioPorDia() {
   }
 
   try {
-    const resposta = await fetch(`https://acqua-agenda-back-1.onrender.com/api/relatorio/por-dia?data=${data}`);
+    const resposta = await fetch(`http://localhost:3000/api/relatorio/por-dia?data=${data}`);
 
     if (!resposta.ok) {
       document.getElementById("resultadoDia").innerHTML = "Erro ao buscar relatório.";
@@ -155,6 +163,7 @@ function montarTabela(lista) {
       <td>${item.placa}</td>
       <td>${item.tipo_lavagem}</td>
       <td>${estrela}</td>
+      <td>R$ ${item.valor}</td>
       <td>${data}</td>
       <td>${hora}</td>
     </tr>`;
