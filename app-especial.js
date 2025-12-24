@@ -3,7 +3,7 @@
 // FEITO ESPECÍFICO PARA SEU HTML E SEU BACKEND
 // =======================================================
 
-const API = "http://localhost:3000/api/lavagens-especiais";
+const API = "https://acqua-agenda-back-1.onrender.com/api/lavagens-especiais";
 
 // -----------------------
 // 🔵 VALIDAÇÃO DE PLACA
@@ -152,13 +152,13 @@ function montarTabelaPMG(lista) {
 async function carregarResumoPMG() {
 
     // Diário
-    const diaRes = await fetch("http://localhost:3000/api/relatorio/pmg/dia");
+    const diaRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/pmg/dia");
     const dia = await diaRes.json();
 
     document.getElementById("hoje-total-pmg").innerText = `Lavagens de hoje: ${dia.total}`;
 
     // Mensal
-    const mesRes = await fetch("http://localhost:3000/api/relatorio/pmg/mensal");
+    const mesRes = await fetch("https://acqua-agenda-back-1.onrender.com/api/relatorio/pmg/mensal");
     const mes = await mesRes.json();
 
     document.getElementById("mes-total-pmg").innerText = `Lavagens no mês: ${mes.total}`;
@@ -176,7 +176,7 @@ async function buscarRelatorioPMGPorDia() {
     }
 
     try {
-        const res = await fetch(`http://localhost:3000/api/relatorio/pmg/por-dia?data=${data}`);
+        const res = await fetch(`https://acqua-agenda-back-1.onrender.com/api/relatorio/pmg/por-dia?data=${data}`);
         const dados = await res.json();
 
         document.getElementById("resultadoDiaPMG").innerHTML = `

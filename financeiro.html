@@ -582,7 +582,7 @@
 
         // Carrega todos os dados da API /api/financeiro
         async function carregarFinanceiro() {
-            const res = await fetch("http://localhost:3000/api/financeiro");
+            const res = await fetch("https://acqua-agenda-back-1.onrender.com/api/financeiro");
             const dados = await res.json();
 
             // Mapear os dados da API
